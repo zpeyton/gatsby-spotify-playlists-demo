@@ -34,26 +34,34 @@ class SpotifyDemo extends Component {
       this.loggedIn = true
       return this.accessToken = localAccesstoken
     }
+
     var urlParts = window.location.href.split('#')
+    
     if(urlParts.length === 2){
+      
       var hash = urlParts[1]
       var queryParts = hash.split('&')
+      
       queryParts.map(paramPair => {
+        
         let paramPairParts = paramPair.split('=')
+        
         if(paramPairParts[0] === 'access_token'){
           this.accessToken = paramPairParts[1] 
           window.localStorage.setItem('spotifyAccessToken',this.accessToken)
           this.loggedIn = true
         }
+
         return true
       })
+
       window.location.href = urlParts[0] +'#'
     }
   }
   
   loadTracks(playlistId) {
     
-    // we should chech cache here for faster loads
+    // we should check cache here for faster loads
 
     const tracksUrl = [
       this.apiRoot,
@@ -85,7 +93,7 @@ class SpotifyDemo extends Component {
         return true
       })
 
-      // call another audio features endpoint with track IDs
+      // call audio features endpoint with track IDs
 
       let audioFeaturesUrl = [
         this.apiRoot,
@@ -131,13 +139,13 @@ class SpotifyDemo extends Component {
   }
 
   auth () {
-    // need to separate this for dev / prod
+    
     if(typeof window == 'undefined'){
       return
     }
     let url = [
       'https://accounts.spotify.com/en/authorize?response_type=token&redirect_uri=',
-      window.location.href.replace(/#.*/,''),
+      window.location.href.replace(/#.*/,''), // dynamic for dev / prod
       '&client_id=7463ab731c454ab4a428559038135f23&scope=user-read-email%20playlist-read-private'
     ].join('')
     window.location.href = url
@@ -161,7 +169,7 @@ class SpotifyDemo extends Component {
 
     this.activePlaylistId = playlists.items[activeIndex].id
 
-    // this will also setState after fetching data
+    // loadTracks will also setState after fetching track data
     this.loadTracks(this.activePlaylistId)
     
   }

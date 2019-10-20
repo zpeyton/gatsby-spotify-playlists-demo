@@ -4,7 +4,8 @@ import SEO from "../components/seo"
 
 const IndexPage = () => (
   /*
-    
+    To do client side validation of a component just do a onSubmit={this.handleSubmit}
+    and then return true if all is well
   */
   <Layout>
     <SEO title="Home" />
