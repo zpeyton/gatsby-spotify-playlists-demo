@@ -9,7 +9,7 @@ exports.handler = function(event,context,callback) {
     console.log("v5")
 
     let jsonData = JSON.parse(event.body)
-    let request = jsonData.data
+    let request = jsonData.payload
     
     if(request['form-name'] == 'contact'){
         const email = request.email
