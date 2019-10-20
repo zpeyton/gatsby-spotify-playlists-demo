@@ -9,7 +9,7 @@ sendgrid.setApiKey(SENDGRID_API_KEY);
 exports.handler = function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("v7")
+    console.log("v8")
 
     let jsonData = JSON.parse(event.body)
     let request = jsonData.payload
