@@ -11,10 +11,10 @@ const IndexPage = () => (
     <h1>Contact us</h1>
     <p>This form should theoretically submit data to Netlify</p>
     <form data-netlify="true" name="contact" id="contact" method="post">
-      <input name="name" placeholder="Name"></input>
-      <input name="email" placeholder="Email"></input>
-      <input name="phone" placeholder="Phone"></input>
-      <input type="submit" value="Submit"></input>
+      <input name="name" placeholder="Name" />
+      <input name="email" placeholder="Email" />
+      <input name="phone" placeholder="Phone" />
+      <input type="submit" value="Submit" />
     </form>
   </Layout>
 )
