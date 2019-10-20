@@ -9,7 +9,7 @@ sendgrid.setApiKey(SENDGRID_API_KEY);
 exports.handler = function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("v13")
+    console.log("v14")
 
     let jsonData = JSON.parse(event.body)
     let request = jsonData.payload
@@ -28,14 +28,14 @@ exports.handler = function(event,context,callback) {
         }
         sendgrid.send(mailParams)
 
-        let mailParams = {
+        mailParams2 = {
             to: email,
             from: 'Netlify Contact Demo <no-reply@blah.com>',
             subject: 'Thank you for your message!',
             text: `We got your message below and will reply as soon as we can.\n\n--------------\n\n${message}`
         }
 
-        sendgrid.send(mailParams)
+        sendgrid.send(mailParams2)
     }
 
     console.log("End Form Submission")
