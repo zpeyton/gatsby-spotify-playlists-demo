@@ -3,11 +3,11 @@ require('dotenv').config()
 const { SENDGRID_API_KEY } = process.env
 
 
-exports.handler = async (event,context,callback) => {
+exports.handler = async function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log('\n\n\n')
-    console.log(event)
+    console.log("\n\n\n")
+    console.log(event.body)
     let jsonData = JSON.parse(event) 
     if(jsonData.payload['form-name'] == 'contact'){
         const email = JSON.parse(event.body).payload.email
