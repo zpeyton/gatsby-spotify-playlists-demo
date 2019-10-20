@@ -14,7 +14,11 @@ const IndexPage = () => (
       <input name="name" placeholder="Name" />
       <input name="email" placeholder="Email" />
       <input name="phone" placeholder="Phone" />
-      <input type="submit" name="submit" value="Submit" />
+      <textarea name="phone" placeholder="Message">
+
+      </textarea>
+      <br />
+      <button type="submit">Send Message</button>
     </form>
   </Layout>
 )

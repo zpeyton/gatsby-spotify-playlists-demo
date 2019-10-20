@@ -716,9 +716,15 @@ ul.track li {
 .clear {
   clear: both;
 }
-#contact input {
+
+#contact {
+  width:300px;
+}
+
+#contact input, #contact textarea {
   display:block;
   margin-bottom:10px;
+  width:100%;
 }
 
 @media only screen and (max-width: 480px) {
