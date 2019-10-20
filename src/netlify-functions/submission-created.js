@@ -6,15 +6,13 @@ const { SENDGRID_API_KEY } = process.env
 exports.handler = function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("v4")
-    
-    //console.log(event.body)
+    console.log("v5")
+
     let jsonData = JSON.parse(event.body)
-    console.log(jsonData.data)
-    console.log(jsonData.payload) 
+    let request = jsonData.data
     
-    if(jsonData.payload['form-name'] == 'contact'){
-        const email = jsonData.payload.email
+    if(request['form-name'] == 'contact'){
+        const email = request.email
         console.log(`Recieved a submission: ${email}`)
     }
 
