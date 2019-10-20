@@ -1,20 +1,18 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <h1>Contact us</h1>
+    <p>This form should theoretically submit data to Netlify</p>
+    <form netlify id="contact">
+      <input name="name" placeholder="Name"></input>
+      <input name="email" placeholder="Email"></input>
+      <input name="phone" placeholder="Phone"></input>
+      <input type="submit" value="Submit"></input>
+    </form>
   </Layout>
 )
 

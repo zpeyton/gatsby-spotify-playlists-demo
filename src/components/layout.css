@@ -716,6 +716,10 @@ ul.track li {
 .clear {
   clear: both;
 }
+#contact input {
+  display:block;
+  margin-bottom:10px;
+}
 
 @media only screen and (max-width: 480px) {
   html {
