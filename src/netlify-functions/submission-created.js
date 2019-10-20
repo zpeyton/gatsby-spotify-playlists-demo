@@ -6,7 +6,7 @@ const { SENDGRID_API_KEY } = process.env
 exports.handler = async function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("\n\n\n")
+    console.log("\n \nv1 \n")
     console.log(event.body)
     let jsonData = JSON.parse(event) 
     if(jsonData.payload['form-name'] == 'contact'){
