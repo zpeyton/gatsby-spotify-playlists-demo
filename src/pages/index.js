@@ -13,7 +13,7 @@ const IndexPage = () => (
     <form data-netlify="true" name="contact" id="contact" method="post">
       <input type="text" name="name" placeholder="Name" />
       <input type="text" name="email" placeholder="Email" />
-      <input type="text" name="phone" placeholder="Phone" />
+      <input type="text" name="cell" placeholder="Cell" />
       <textarea name="message" placeholder="Message"></textarea>
       <br />
       <button type="submit">Send Message</button>
