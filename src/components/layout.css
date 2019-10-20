@@ -615,6 +615,108 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+#playlists {
+  width:30%;
+  float:left;
+  margin-right: 10px;
+  /* border-left:1px solid black; */
+}
+
+#tracks {
+  float:left;
+  width: 60%;
+  
+}
+
+ul.track {
+  float:left;
+  width: 100%;
+  border-left:1px solid black;
+  border-top:1px solid black;
+  
+}
+
+ul.track li {
+  list-style-type: none;
+  float: left;
+  min-width: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px 8px;
+  margin:0;
+}
+
+#playlists {
+  
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-top: 1px solid #ccc;
+  border-right:1px solid #ccc;
+  border-left:1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+#playlists h3 {
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin: 0;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 30px;
+}
+
+#playlists div.playlist {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  
+  margin-bottom:0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#playlists div.playlist.active {
+  background: lightblue;
+}
+
+#playlists div.playlist.active:hover {
+  background: lightblue;
+  cursor: pointer;
+}
+
+#playlists div.playlist:hover {
+  background: blanchedalmond;
+  cursor: pointer;
+}
+
+#playlists div:first-of-type {
+  border-top:1px solid #ccc;
+}
+
+#tracks {
+}
+
+#tracks td, #tracks th {
+  padding: 10px;
+}
+
+.container {
+  margin: 0 auto;
+  width:95%;
+}
+
+.even {
+  background: #ccc;
+}
+
+.odd {
+  background: white;
+}
+
+.clear {
+  clear: both;
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
