@@ -14,7 +14,7 @@ const IndexPage = () => (
       <input name="name" placeholder="Name" />
       <input name="email" placeholder="Email" />
       <input name="phone" placeholder="Phone" />
-      <textarea name="phone" placeholder="Message">
+      <textarea name="message" placeholder="Message">
 
       </textarea>
       <br />
