@@ -212,7 +212,7 @@ class SpotifyDemo extends Component {
     }).catch(error => {
       //console.log(error.response)
       let response = error.response.data
-      if(response.error.messgatage === 'Invalid access token' ||
+      if(response.error.message === 'Invalid access token' ||
       response.error.message === 'The access token expired'
       ){
         console.log('Invalid access token')
