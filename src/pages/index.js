@@ -7,7 +7,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <h1>Contact us</h1>
     <p>This form should theoretically submit data to Netlify</p>
-    <form netlify id="contact" method="post">
+    <form netlify id="contact" method="post" action="/contact-success">
       <input name="name" placeholder="Name"></input>
       <input name="email" placeholder="Email"></input>
       <input name="phone" placeholder="Phone"></input>
