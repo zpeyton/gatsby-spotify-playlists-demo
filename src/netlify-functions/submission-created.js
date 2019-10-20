@@ -9,7 +9,7 @@ sendgrid.setApiKey(SENDGRID_API_KEY);
 exports.handler = function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("v9")
+    console.log("v10")
 
     let jsonData = JSON.parse(event.body)
     let request = jsonData.payload
@@ -24,7 +24,7 @@ exports.handler = function(event,context,callback) {
             from: 'Web form <admin@quizmaniapp.com>',
             replyTo: `${name} <${email}>`,
             subject: 'Contact Form',
-            text: `Name:${name}\nEmail:${email}\Phone:${phone}\nMessage:\n\n${message}`
+            text: `Name:${name}\n\nEmail:${email}\n\nPhone:${phone}\n\nMessage:\n\n${message}`
         }
         sendgrid.send(mailParams)
         console.log(`Recieved a submission: ${email}`)
