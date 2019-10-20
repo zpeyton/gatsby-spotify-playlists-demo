@@ -7,7 +7,7 @@ exports.handler = async function(event,context,callback) {
     
     //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
     console.log("v1")
-    console.log(event.body)
+    //console.log(event.body)
     let jsonData = JSON.parse(event) 
     if(jsonData.payload['form-name'] == 'contact'){
         const email = JSON.parse(event.body).payload.email
