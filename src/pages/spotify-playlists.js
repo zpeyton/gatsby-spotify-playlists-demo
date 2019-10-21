@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
+import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import Header from "../components/header"
 import "../components/layout.css"
 
@@ -251,26 +252,34 @@ class SpotifyDemo extends Component {
       <div className="container">
       {this.loggedIn ? (
       <>
-        <h1>Welcome</h1>
-        <div className="clear"></div>
-        <div id="playlists">
-          <h3>Playlists</h3>
-          { playlists }
-        </div>
-        <div id="tracks">
-          <h3>Tracks</h3>
-          <table className="tracks">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Key</th>
-              </tr>
-            </thead>
-            <tbody>
-              { tracks }
-            </tbody>
-          </table>
-        </div>
+        <h1>Spotify Playlists</h1>
+        <p>Here are your playlists plus detailed track information.</p>
+        <Row>
+          <Col sm={3}>
+          <div id="playlists">
+            <h3>Playlists</h3>
+            { playlists }
+          </div>
+          </Col>
+          <Col sm={9}>
+          <div id="tracks">
+            <h3>Tracks</h3>
+            <table className="table tracks">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Key</th>
+                </tr>
+              </thead>
+              <tbody>
+                { tracks }
+              </tbody>
+            </table>
+          </div>
+          </Col>
+        </Row>
+        
+        
       </>
       ) : (
       <>
