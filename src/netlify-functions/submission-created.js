@@ -8,12 +8,16 @@ sendgrid.setApiKey(SENDGRID_API_KEY);
 
 exports.handler = function(event,context,callback) {
     
-    //console.log(`Sendgrid API Key ${SENDGRID_API_KEY}`)
-    console.log("v15")
+    console.log("v18")
+
+    //console.log(`SENDGRID_API_KEY ${SENDGRID_API_KEY}`)
 
     let jsonData = JSON.parse(event.body)
+    
     let request = jsonData.payload
     
+    //console.log(request)
+
     if(request.form_name == 'contact'){
         
         const { name, email } = request
@@ -26,9 +30,10 @@ exports.handler = function(event,context,callback) {
             subject: 'New Message',
             text: `Name: ${name}\n\nEmail: ${email}\n\nPhone: ${phone}\n\nMessage:\n\n${message}`
         }
+        //console.log(mailParams)
         sendgrid.send(mailParams)
 
-        mailParams2 = {
+        let mailParams2 = {
             to: email,
             from: 'Netlify Contact Demo <no-reply@blah.com>',
             subject: 'Thank you for your message!',
