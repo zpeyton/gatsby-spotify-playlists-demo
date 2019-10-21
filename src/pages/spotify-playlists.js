@@ -258,6 +258,7 @@ class SpotifyDemo extends Component {
           { playlists }
         </div>
         <div id="tracks">
+          <h3>Tracks</h3>
           <table className="tracks">
             <thead>
               <tr>
