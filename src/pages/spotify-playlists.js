@@ -89,7 +89,10 @@ class SpotifyDemo extends Component {
         this.trackIds.push(item.track.id)
         this.unmergedTrackInfo[item.track.id] = {
           id: item.track.id,
-          name: item.track.name // album etc
+          name: item.track.name, // album etc
+          artist: item.track.artists[0].name,
+          album: item.track.album.name,
+          length: item.track.duration_ms
         }
         return true
       })
@@ -120,6 +123,12 @@ class SpotifyDemo extends Component {
     // add audio fields to core info
     audioDetails.data.audio_features.map(item => {
         trackInfo[item.id].key = item.key
+        trackInfo[item.id].minmaj = item.mode
+        trackInfo[item.id].bpm = Math.round(item.tempo)
+        trackInfo[item.id].energy = (item.energy * 10).toFixed(1)
+        trackInfo[item.id].danceability = (item.danceability * 10).toFixed(1)
+        trackInfo[item.id].positivity = Math.round(item.valence * 10)
+        trackInfo[item.id].instrumentalness = item.instrumentalness
         return true
       }
     )
@@ -175,16 +184,47 @@ class SpotifyDemo extends Component {
     
   }
 
-  numericKeyToAlpha(key) {
+  numericKeyToAlpha(key, mode) {
     
-    let alphas = [ "C","C#/Db","D","E",'E#/Fb','F','F#/Gb','G','G#/Ab','A',"A#/Bb","B"]
+    let alphas = [ "C","Db","D",'Eb','E','F','F#','G','Ab','A',"Bb","B"]
+    let modalities = ["m", ""]
 
     if(key < 0){
       return "No Key"
     }
     
-    return alphas[key]
+    if(mode < 0){
+      return "No Key"
+    }
+
+    return alphas[key] + modalities[mode]
   }
+  
+  numericKeyToCamelot(key) {
+    
+    let camelots = [ "8B","12A","10B","5B",'12B','7B','2B','9B','1A','11B',"6B","1B"]
+
+    if(key < 0){
+      return "No Key"
+    }
+    
+    return camelots[key]
+  }
+
+  msToMinutes(length) {
+    var minutes, seconds;
+    seconds = Math.ceil(length / 1000);
+    minutes = Math.floor(seconds / 60) % 60;
+    seconds = seconds % 60;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    
+    return minutes + ":" + seconds;
+}
+
+instrumentalnessToVocals(instrumentalness) {
+    
+  return instrumentalness > 0.5 ? "No" : "Yes";
+}
 
   componentDidMount() {
     
@@ -241,7 +281,14 @@ class SpotifyDemo extends Component {
       return (
         <tr className={ this.alternateRowClass(index) } key={index}> 
           <td>{item.name}</td>
-          <td>{this.numericKeyToAlpha(item.key)}</td> 
+          <td>{item.artist}</td>
+          <td>{this.msToMinutes(item.length)}</td>
+          <td>{item.bpm}</td>
+          <td>{this.numericKeyToAlpha(item.key, item.minmaj)}</td> 
+          <td>{item.energy}</td>
+          <td>{item.danceability}</td>
+          <td>{item.positivity}</td>
+          <td>{this.instrumentalnessToVocals(item.instrumentalness)}</td>
         </tr>
       )
     })
@@ -267,8 +314,15 @@ class SpotifyDemo extends Component {
             <table className="table tracks">
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>Length</th>
+                  <th>BPM</th>
                   <th>Key</th>
+                  <th>Energy</th>
+                  <th>Danceability</th>
+                  <th>Positivity</th>
+                  <th>Vocal-heavy</th>
                 </tr>
               </thead>
               <tbody>
