@@ -200,17 +200,6 @@ class SpotifyDemo extends Component {
     return alphas[key] + modalities[mode]
   }
   
-  numericKeyToCamelot(key) {
-    
-    let camelots = [ "8B","12A","10B","5B",'12B','7B','2B','9B','1A','11B',"6B","1B"]
-
-    if(key < 0){
-      return "No Key"
-    }
-    
-    return camelots[key]
-  }
-
   msToMinutes(length) {
     var minutes, seconds;
     seconds = Math.ceil(length / 1000);
@@ -274,12 +263,12 @@ instrumentalnessToVocals(instrumentalness) {
   render () {
     
     let playlists = this.state.playlists.items.map((item,index) =>
-      <div onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist active" : "playlist"} key={item.id} data-key-id={index}>{item.name}</div>
+      <tr><td onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist bg-primary" : "playlist"} key={item.id} data-key-id={index}>{item.name}</td></tr>
     )
 
     let tracks = this.state.tracks.map((item,index) => {
       return (
-        <tr className={ this.alternateRowClass(index) } key={index}> 
+        <tr key={index}> 
           <td>{item.name}</td>
           <td>{item.artist}</td>
           <td>{this.msToMinutes(item.length)}</td>
@@ -296,22 +285,28 @@ instrumentalnessToVocals(instrumentalness) {
     return (
       <>
       <Header></Header>
-      <div className="container">
+      <div className="container-fluid">
       {this.loggedIn ? (
       <>
-        <h1>Spotify Playlists</h1>
-        <p>Here are your playlists plus detailed track information.</p>
+        <h4 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h4>
         <Row>
           <Col sm={3}>
-          <div id="playlists">
-            <h3>Playlists</h3>
+          <div id="playlists" className="table-responsive">
+          <table className="table table-striped table-dark table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Playlists</th>
+          </tr>
+          </thead>
+          <tbody>
             { playlists }
+          </tbody>
+          </table>
           </div>
           </Col>
           <Col sm={9}>
-          <div id="tracks">
-            <h3>Tracks</h3>
-            <table className="table tracks">
+          <div id="tracks" className="table-responsive">
+            <table className="table table-striped table-dark table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Title</th>
@@ -322,7 +317,7 @@ instrumentalnessToVocals(instrumentalness) {
                   <th>Energy</th>
                   <th>Danceability</th>
                   <th>Positivity</th>
-                  <th>Vocal-heavy</th>
+                  <th className="text-nowrap">Vocal-heavy</th>
                 </tr>
               </thead>
               <tbody>
