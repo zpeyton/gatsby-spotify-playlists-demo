@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import Header from "../components/header"
-import "../components/layout.css"
+import "../components/layout.scss"
 
 class SpotifyDemo extends Component {
   
@@ -263,7 +263,7 @@ instrumentalnessToVocals(instrumentalness) {
   render () {
     
     let playlists = this.state.playlists.items.map((item,index) =>
-      <tr><td onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist bg-primary" : "playlist"} key={item.id} data-key-id={index}>{item.name}</td></tr>
+      <tr><td onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist bg-success" : "playlist"} key={item.id} data-key-id={index}>{item.name}</td></tr>
     )
 
     let tracks = this.state.tracks.map((item,index) => {
@@ -271,13 +271,13 @@ instrumentalnessToVocals(instrumentalness) {
         <tr key={index}> 
           <td>{item.name}</td>
           <td>{item.artist}</td>
-          <td>{this.msToMinutes(item.length)}</td>
-          <td>{item.bpm}</td>
-          <td>{this.numericKeyToAlpha(item.key, item.minmaj)}</td> 
-          <td>{item.energy}</td>
-          <td>{item.danceability}</td>
-          <td>{item.positivity}</td>
-          <td>{this.instrumentalnessToVocals(item.instrumentalness)}</td>
+          <td className="text-right">{this.msToMinutes(item.length)}</td>
+          <td className="text-nowrap text-right">{item.bpm} BPM</td>
+          <td className="text-center">{this.numericKeyToAlpha(item.key, item.minmaj)}</td> 
+          <td className="text-center">{item.energy}</td>
+          <td className="text-center">{item.danceability}</td>
+          <td className="text-center">{item.positivity}</td>
+          <td className="text-center">{this.instrumentalnessToVocals(item.instrumentalness)}</td>
         </tr>
       )
     })
@@ -288,11 +288,11 @@ instrumentalnessToVocals(instrumentalness) {
       <div className="container-fluid">
       {this.loggedIn ? (
       <>
-        <h4 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h4>
+        <h5 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h5>
         <Row>
           <Col sm={3}>
           <div id="playlists" className="table-responsive">
-          <table className="table table-striped table-dark table-bordered table-hover">
+          <table className="table table-dark table-hover table-borderless">
           <thead>
           <tr>
             <th>Playlists</th>
@@ -306,18 +306,18 @@ instrumentalnessToVocals(instrumentalness) {
           </Col>
           <Col sm={9}>
           <div id="tracks" className="table-responsive">
-            <table className="table table-striped table-dark table-bordered table-hover">
+            <table className="table table-dark table-striped">
               <thead>
                 <tr>
                   <th>Title</th>
                   <th>Artist</th>
-                  <th>Length</th>
-                  <th>BPM</th>
-                  <th>Key</th>
-                  <th>Energy</th>
-                  <th>Danceability</th>
-                  <th>Positivity</th>
-                  <th className="text-nowrap">Vocal-heavy</th>
+                  <th className="text-right">Length</th>
+                  <th className="text-right">BPM</th>
+                  <th className="text-center">Key</th>
+                  <th className="text-center">Energy</th>
+                  <th className="text-center">Danceability</th>
+                  <th className="text-center">Positivity</th>
+                  <th className="text-nowrap text-center">Vocal-heavy</th>
                 </tr>
               </thead>
               <tbody>

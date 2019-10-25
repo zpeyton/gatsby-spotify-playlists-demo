@@ -4,10 +4,10 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <div className="container-fluid mt-4">
-      <h1>
+    <div className="container-fluid pt-3 pb-1 bg-success title">
+      <h2>
           {siteTitle}
-      </h1>
+      </h2>
     </div>
   </header>
 )
@@ -17,7 +17,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: `DJ Playlist Preview Tool`,
+  siteTitle: `DJ Playlist Preview`
 }
 
 export default Header
