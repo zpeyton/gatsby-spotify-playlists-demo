@@ -7,6 +7,7 @@ const Header = ({ siteTitle }) => (
     <div className="container-fluid pt-3 pb-1 bg-success title">
       <h2>
           {siteTitle}
+          <small> - Track analysis for your Spotify playlists</small>
       </h2>
     </div>
   </header>

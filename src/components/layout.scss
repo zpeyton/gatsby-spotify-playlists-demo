@@ -13,9 +13,17 @@ td, h5 {
   color: #ccc;
 }
 
+p.login   {
+  line-height: 1.6;
+  // max-width: 70ch;
+  color: #ccc;
+  font-size: 110%;
+}
+
 .bg-success {
   font-weight: bold;
   text-shadow: 1px 1px 0px #000;
+  color: white;
 }
 
 .title {
@@ -23,7 +31,6 @@ td, h5 {
 }
 
 h2 {
-  color: #fff;
   text-shadow: 1px 1px 2px #222;
 }
 
