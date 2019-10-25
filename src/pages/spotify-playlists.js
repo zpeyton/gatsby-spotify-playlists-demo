@@ -332,9 +332,9 @@ instrumentalnessToVocals(instrumentalness) {
       </>
       ) : (
       <>
-        <h1>Login</h1>
-        <p>Please log into your Spotify account to access your playlists.</p>
-        <button onClick={this.auth}>Login to spotify</button>
+
+        <p className="login mt-4">View additional information about your tracks in Spotify, including <strong>BPM</strong>, <strong>Key</strong>, <strong>Energy</strong>, and  <strong>Danceability</strong>.</p>
+        <button onClick={this.auth} type="button" className="btn btn-success btn-lg mt-3">Login to Spotify</button>
       </>
       )}
         
