@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import Header from "../components/header"
-import "../components/layout.css"
+import "../components/layout.scss"
 
 class SpotifyDemo extends Component {
   
@@ -89,7 +89,10 @@ class SpotifyDemo extends Component {
         this.trackIds.push(item.track.id)
         this.unmergedTrackInfo[item.track.id] = {
           id: item.track.id,
-          name: item.track.name // album etc
+          name: item.track.name, // album etc
+          artist: item.track.artists[0].name,
+          album: item.track.album.name,
+          length: item.track.duration_ms
         }
         return true
       })
@@ -120,6 +123,12 @@ class SpotifyDemo extends Component {
     // add audio fields to core info
     audioDetails.data.audio_features.map(item => {
         trackInfo[item.id].key = item.key
+        trackInfo[item.id].minmaj = item.mode
+        trackInfo[item.id].bpm = Math.round(item.tempo)
+        trackInfo[item.id].energy = (item.energy * 10).toFixed(1)
+        trackInfo[item.id].danceability = (item.danceability * 10).toFixed(1)
+        trackInfo[item.id].positivity = Math.round(item.valence * 10)
+        trackInfo[item.id].instrumentalness = item.instrumentalness
         return true
       }
     )
@@ -175,16 +184,36 @@ class SpotifyDemo extends Component {
     
   }
 
-  numericKeyToAlpha(key) {
+  numericKeyToAlpha(key, mode) {
     
-    let alphas = [ "C","C#/Db","D","E",'E#/Fb','F','F#/Gb','G','G#/Ab','A',"A#/Bb","B"]
+    let alphas = [ "C","Db","D",'Eb','E','F','F#','G','Ab','A',"Bb","B"]
+    let modalities = ["m", ""]
 
     if(key < 0){
       return "No Key"
     }
     
-    return alphas[key]
+    if(mode < 0){
+      return "No Key"
+    }
+
+    return alphas[key] + modalities[mode]
   }
+  
+  msToMinutes(length) {
+    var minutes, seconds;
+    seconds = Math.ceil(length / 1000);
+    minutes = Math.floor(seconds / 60) % 60;
+    seconds = seconds % 60;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    
+    return minutes + ":" + seconds;
+}
+
+instrumentalnessToVocals(instrumentalness) {
+    
+  return instrumentalness > 0.5 ? "No" : "Yes";
+}
 
   componentDidMount() {
     
@@ -234,14 +263,21 @@ class SpotifyDemo extends Component {
   render () {
     
     let playlists = this.state.playlists.items.map((item,index) =>
-      <div onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist active" : "playlist"} key={item.id} data-key-id={index}>{item.name}</div>
+      <tr><td onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist bg-success" : "playlist"} key={item.id} data-key-id={index}>{item.name}</td></tr>
     )
 
     let tracks = this.state.tracks.map((item,index) => {
       return (
-        <tr className={ this.alternateRowClass(index) } key={index}> 
+        <tr key={index}> 
           <td>{item.name}</td>
-          <td>{this.numericKeyToAlpha(item.key)}</td> 
+          <td>{item.artist}</td>
+          <td className="text-right">{this.msToMinutes(item.length)}</td>
+          <td className="text-nowrap text-right">{item.bpm} BPM</td>
+          <td className="text-center">{this.numericKeyToAlpha(item.key, item.minmaj)}</td> 
+          <td className="text-center">{item.energy}</td>
+          <td className="text-center">{item.danceability}</td>
+          <td className="text-center">{item.positivity}</td>
+          <td className="text-center">{this.instrumentalnessToVocals(item.instrumentalness)}</td>
         </tr>
       )
     })
@@ -249,26 +285,39 @@ class SpotifyDemo extends Component {
     return (
       <>
       <Header></Header>
-      <div className="container">
+      <div className="container-fluid">
       {this.loggedIn ? (
       <>
-        <h1>Spotify Playlists</h1>
-        <p>Here are your playlists plus detailed track information.</p>
+        <h5 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h5>
         <Row>
           <Col sm={3}>
-          <div id="playlists">
-            <h3>Playlists</h3>
+          <div id="playlists" className="table-responsive">
+          <table className="table table-dark table-hover table-borderless">
+          <thead>
+          <tr>
+            <th>Playlists</th>
+          </tr>
+          </thead>
+          <tbody>
             { playlists }
+          </tbody>
+          </table>
           </div>
           </Col>
           <Col sm={9}>
-          <div id="tracks">
-            <h3>Tracks</h3>
-            <table className="table tracks">
+          <div id="tracks" className="table-responsive">
+            <table className="table table-dark table-striped">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Key</th>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th className="text-right">Length</th>
+                  <th className="text-right">BPM</th>
+                  <th className="text-center">Key</th>
+                  <th className="text-center">Energy</th>
+                  <th className="text-center">Danceability</th>
+                  <th className="text-center">Positivity</th>
+                  <th className="text-nowrap text-center">Vocal-heavy</th>
                 </tr>
               </thead>
               <tbody>
@@ -283,9 +332,9 @@ class SpotifyDemo extends Component {
       </>
       ) : (
       <>
-        <h1>Login</h1>
-        <p>Please log into your Spotify account to access your playlists.</p>
-        <button onClick={this.auth}>Login to spotify</button>
+
+        <p className="login mt-4">View additional information about your tracks in Spotify, including <strong>BPM</strong>, <strong>Key</strong>, <strong>Energy</strong>, and  <strong>Danceability</strong>.</p>
+        <button onClick={this.auth} type="button" className="btn btn-success btn-lg mt-3">Login to Spotify</button>
       </>
       )}
         

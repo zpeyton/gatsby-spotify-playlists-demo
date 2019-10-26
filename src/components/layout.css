@@ -1,80 +1,15 @@
 
-#playlists {
-  margin-right: 10px;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-top: 1px solid #ccc;
-  border-right:1px solid #ccc;
-  border-left:1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+body {
+  /* background-color: rgb(50, 54, 57); */
+  background-color: #919599;
 }
 
-#tracks {
-  border-top: 1px solid #ccc;
-  border-right:1px solid #ccc;
-  border-left:1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  width:100%;
+#playlists td {
+  cursor: default;
 }
 
-#tracks table {
-  width:100%;
-  border-top: 1px solid black;
-}
-
-#playlists h3,#tracks h3 {
-  text-align: center;
-  border-bottom: 1px solid black;
-  margin: 0;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 30px;
-  font-weight: bold;
-  background: blanchedalmond;
-}
-
-#playlists div.playlist {
-  padding: 10px;
-  border-bottom: 2px solid #ccc;
-  
-  margin-bottom:0;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-#playlists div.playlist.active {
-  background: lightblue;
-}
-
-#playlists div.playlist.active:hover {
-  background: lightblue;
-  cursor: pointer;
-}
-
-#playlists div.playlist:hover {
-  background: blanchedalmond;
-  cursor: pointer;
-}
-
-#playlists div:first-of-type {
-  border-top:1px solid #ccc;
-}
-
-#tracks td, #tracks th {
-  padding: 10px;
-}
-
-.container {
-  margin: 0 auto;
-  width:95%;
-}
-
-.even {
-  background: #ccc;
-}
-
-.odd {
-  background: white;
+h1, h4 {
+  /* color: white; */
 }
 
 .clear {

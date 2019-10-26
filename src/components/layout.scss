@@ -1,0 +1,60 @@
+
+$background-color: darken(#343a40, 13%);
+
+body {
+  background-color: $background-color;
+}
+
+#playlists td {
+  cursor: default;
+}
+
+td, h5 {
+  color: #ccc;
+}
+
+p.login   {
+  line-height: 1.6;
+  // max-width: 70ch;
+  color: #ccc;
+  font-size: 110%;
+}
+
+.bg-success {
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #000;
+  color: white;
+}
+
+.title {
+  // background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,128,.7));
+}
+
+h2 {
+  text-shadow: 1px 1px 2px #222;
+}
+
+.clear {
+  clear: both;
+}
+
+#contact-card {
+  max-width: 350px;
+}
+
+#contact {
+  width:100%;
+  margin-bottom: 0px;
+}
+
+#contact input, #contact textarea {
+  display:block;
+  margin-bottom:10px;
+  width:100%;
+}
+
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+}
