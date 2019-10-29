@@ -337,7 +337,9 @@ instrumentalnessToVocals(instrumentalness) {
         <button onClick={this.auth} type="button" className="btn btn-success btn-lg mt-3">Login to Spotify</button>
       </>
       )}
-        
+  <footer>
+  Created by <a href="https://github.com/zpeyton/">Zach Peyton</a> and <a href="https://twitter.com/leonbarnard">Leon Barnard</a>
+  </footer>
       </div>
       </>
     )
