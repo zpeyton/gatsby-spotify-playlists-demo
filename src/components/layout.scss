@@ -17,7 +17,11 @@ p.login   {
   line-height: 1.6;
   // max-width: 70ch;
   color: #ccc;
-  font-size: 110%;
+  font-size: 125%;
+  
+  strong {
+    color: #eee;
+  }
 }
 
 .bg-success {
@@ -41,6 +45,7 @@ h2 {
 footer {
   color: #999;
   margin-top: 4em;
+  margin-bottom: 1em;
   
   a {
     color: #999;

@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import axios from "axios"
-import { Container, Row, Col, Card, Button } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import Header from "../components/header"
+import SEO from "../components/seo"
 import "../components/layout.scss"
 
 class SpotifyDemo extends Component {
@@ -284,6 +285,7 @@ instrumentalnessToVocals(instrumentalness) {
 
     return (
       <>
+      <SEO title="test" description="test description" metaDescription="test description" />
       <Header></Header>
       <div className="container-fluid">
       {this.loggedIn ? (
