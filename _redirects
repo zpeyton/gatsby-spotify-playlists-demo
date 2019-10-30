@@ -1,0 +1,2 @@
+# Redirect domain to www
+https://djplaylistpreview.com/* https://www.djplaylistpreview.com/:splat 301!
