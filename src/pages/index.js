@@ -285,7 +285,7 @@ instrumentalnessToVocals(instrumentalness) {
 
     return (
       <>
-      <SEO title="test" description="test description" metaDescription="test description" />
+      <SEO title="DJ Playlist Preview" description="Analyze tracks from your Spotify playlists" metaDescription="View detailed track information for your Spotify Playlists" />
       <Header></Header>
       <div className="container-fluid">
       {this.loggedIn ? (
