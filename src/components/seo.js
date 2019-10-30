@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`${site.siteMetadata.title}`}
+      titleTemplate={`${site.siteMetadata.title} - Spotify Track Analyzer`}
       meta={[
         {
           name: `description`,
@@ -57,7 +57,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: '@leonbarnard',
         },
         {
           name: `twitter:title`,
