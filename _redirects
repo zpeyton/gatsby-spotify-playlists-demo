@@ -1,3 +1,2 @@
-# Redirect domain to www
-https://djplaylistpreview.com/* https://www.djplaylistpreview.com/:splat 301!
-https://unruffled-cray-4b9749.netlify.com/* https://www.djplaylistpreview.com/:splat 301!
+# Redirect Netlify subdomain to primary domain
+https://unruffled-cray-4b9749.netlify.com/* https://djplaylistpreview.com/:splat 301!
