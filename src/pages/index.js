@@ -335,8 +335,7 @@ instrumentalnessToVocals(instrumentalness) {
                   <th>Artist</th>
                   <th className="text-right">Length</th>
                   <th className="text-right">BPM</th>
-                  <th className="text-center">Key</th>
-                  <th className="text-center">Camleot Key</th>
+                  <th colspan="2" className="text-center">Key</th>
                   <th className="text-center">Energy</th>
                   <th className="text-center">Danceability</th>
                   <th className="text-center">Positivity</th>
