@@ -207,12 +207,11 @@ class SpotifyDemo extends Component {
   alphaKeyToCamelot(key, mode) {
     let alphas = [ "C","Db","D",'Eb','E','F','F#','G','Ab','A',"Bb","B"]
     let modalities = ["m", ""]
-    // let alphaKeys = ["Abm","Ebm","Bbm","Fm","Cm","Gm","Dm","Am","Em","Bm","F#m","Dbm","B","Gbm","Db","Ab","Eb","Bb","F","C","G","D","A","E"]
+    let alphaKeys = ["Abm","Ebm","Bbm","Fm","Cm","Gm","Dm","Am","Em","Bm","F#m","Dbm","B","Gbm","Db","Ab","Eb","Bb","F","C","G","D","A","E"]
     let camelots = ["1A","2A","3A","4A","5A","6A","7A","8A","9A","10A","11A","12A","1B","2B","3B","4B","5B","6B","7B","8B","9B","10B","11B","12B"]
-    let index=""
     
     let alphaKey = alphas[key] + modalities[mode]
-    index = indexOf(alphaKey)
+    var index = alphaKeys.indexOf(alphaKey)
     
     if (index < 0){
       return "No Key"
@@ -309,7 +308,7 @@ instrumentalnessToVocals(instrumentalness) {
       <SEO title="DJ Playlist Preview" description="Analyze tracks from your Spotify playlists. Get BPM, Key, Energy, and more." />
       <Header></Header>
       <div className="container-fluid">
-      {!this.loggedIn ? (
+      {this.loggedIn ? (
       <>
         <h5 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h5>
         <Row>
