@@ -189,6 +189,7 @@ class SpotifyDemo extends Component {
     
     let alphas = [ "C","Db","D",'Eb','E','F','F#','G','Ab','A',"Bb","B"]
     let modalities = ["m", ""]
+    let alphaKey = ''
 
     if(key < 0){
       return "No Key"
@@ -197,8 +198,23 @@ class SpotifyDemo extends Component {
     if(mode < 0){
       return "No Key"
     }
+    
+    alphaKey = alphas[key] + modalities[mode];
 
-    return alphas[key] + modalities[mode]
+    return alphaKey;
+  }
+  
+  alphaKeyToCamelot(key, mode) {
+    let alphas = [ "C","Db","D",'Eb','E','F','F#','G','Ab','A',"Bb","B"]
+    let modalities = ["m", ""]
+    // let alphaKeys = ["Abm","Ebm","Bbm","Fm","Cm","Gm","Dm","Am","Em","Bm","F#m","Dbm","B","Gbm","Db","Ab","Eb","Bb","F","C","G","D","A","E"]
+    let camelots = ["1A","2A","3A","4A","5A","6A","7A","8A","9A","10A","11A","12A","1B","2B","3B","4B","5B","6B","7B","8B","9B","10B","11B","12B"]
+    let index=""
+    
+    let alphaKey = alphas[key] + modalities[mode]
+    index = index(alphaKey)
+    return camelots[index];
+    
   }
   
   msToMinutes(length) {
@@ -266,7 +282,7 @@ instrumentalnessToVocals(instrumentalness) {
     let playlists = this.state.playlists.items.map((item,index) =>
       <tr><td onClick={this.changePlaylist.bind(this)} className={item.active ? "playlist bg-success" : "playlist"} key={item.id} data-key-id={index}>{item.name}</td></tr>
     )
-
+    
     let tracks = this.state.tracks.map((item,index) => {
       return (
         <tr key={index}> 
@@ -275,6 +291,7 @@ instrumentalnessToVocals(instrumentalness) {
           <td className="text-right">{this.msToMinutes(item.length)}</td>
           <td className="text-nowrap text-right">{item.bpm} BPM</td>
           <td className="text-center">{this.numericKeyToAlpha(item.key, item.minmaj)}</td> 
+          <td className="text-center">{this.alphaKeyToCamelot(item.key, item.minmaj)}</td> 
           <td className="text-center">{item.energy}</td>
           <td className="text-center">{item.danceability}</td>
           <td className="text-center">{item.positivity}</td>
@@ -288,7 +305,7 @@ instrumentalnessToVocals(instrumentalness) {
       <SEO title="DJ Playlist Preview" description="Analyze tracks from your Spotify playlists. Get BPM, Key, Energy, and more." />
       <Header></Header>
       <div className="container-fluid">
-      {this.loggedIn ? (
+      {!this.loggedIn ? (
       <>
         <h5 className="mt-3 mb-4">Select from your Spotify playlists to view detailed track information</h5>
         <Row>
@@ -316,6 +333,7 @@ instrumentalnessToVocals(instrumentalness) {
                   <th className="text-right">Length</th>
                   <th className="text-right">BPM</th>
                   <th className="text-center">Key</th>
+                  <th className="text-center">Camleot Key</th>
                   <th className="text-center">Energy</th>
                   <th className="text-center">Danceability</th>
                   <th className="text-center">Positivity</th>
