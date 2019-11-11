@@ -212,9 +212,13 @@ class SpotifyDemo extends Component {
     let index=""
     
     let alphaKey = alphas[key] + modalities[mode]
-    index = index(alphaKey)
-    return camelots[index];
+    index = indexOf(alphaKey)
     
+    if (index < 0){
+      return "No Key"
+    }
+
+    return camelots[index];    
   }
   
   msToMinutes(length) {
