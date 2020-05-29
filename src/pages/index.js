@@ -86,7 +86,7 @@ class SpotifyDemo extends Component {
       
       this.unmergedTrackInfo = {}
 
-      tracksJSON.data.items.map(item => {
+      tracksJSON.data.items.filter(x => x.track).map(item => {
         this.trackIds.push(item.track.id)
         this.unmergedTrackInfo[item.track.id] = {
           id: item.track.id,
