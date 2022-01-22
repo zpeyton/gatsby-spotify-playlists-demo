@@ -22,7 +22,7 @@
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-source-graphql": "^2.1.20",
     "gatsby-transformer-sharp": "^2.2.23",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "puppeteer": "^1.20.0",
